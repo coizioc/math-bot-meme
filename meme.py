@@ -59,7 +59,6 @@ SCROLL_COORDS = [(242, 714), (473,1000)]
 SONIC_COORDS = [(89, 70), (269, 194)]
 
 AUTHORIZED_CHANNELS = [340426498764832768, 408424622648721410, 340426332859269140]
-VIP = [293219528450637824]
 
 MAX_LINE_LENGTH = 16
 MINIMUM_FONT_SIZE = 6
@@ -185,7 +184,7 @@ class Meme():
     @commands.command(aliases=['boardroom'])
     async def boardroom_suggestion(self, ctx, boss, guy1, woman, guy2):
         """Generates Boardroom Suggestion image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [boss, guy1, woman, guy2]
             areas = [BOARDROOM_BOSS_COORDS, BOARDROOM_GUY1_COORDS, BOARDROOM_WOMAN_COORDS, BOARDROOM_GUY2_COORDS]
             out = place_text(BOARDROOM_FILE, texts, areas, initial_font_size=60)
@@ -197,7 +196,7 @@ class Meme():
     @commands.command()
     async def brain(self, ctx, *args):
         """Generates Expanding Brain image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             out = variable_sized_comic('brain', args, 300)
             if out == SUCCESS_STRING:
                 await ctx.channel.send(file=discord.File(OUT_FILE))
@@ -207,7 +206,7 @@ class Meme():
     @commands.command(aliases=['news', 'despacito'])
     async def breaking_news(self, ctx, image_url, headline, ticker):
         """Generates Breaking News image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             out = place_overlay_on_image(image_url, BREAKING_NEWS_FILE)
             if out == SUCCESS_STRING:
                 texts = [headline.upper(), ticker.upper()]
@@ -223,7 +222,7 @@ class Meme():
     @commands.command(aliases=['bf', 'boyfriend'])
     async def distracted_bf(self, ctx, bf, gf, girl):
         """Generates Distracted Boyfriend image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [bf, gf, girl]
             areas = [DISTRACTED_BF_COORDS, DISTRACTED_GF_COORDS, DISTRACTED_GIRL_COORDS]
             out = place_text(BOYFRIEND_FILE, texts, areas, initial_font_size=60)
@@ -235,7 +234,7 @@ class Meme():
     @commands.command()
     async def drake(self, ctx, top, bottom):
         """Generates Drakeposting image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [top, bottom]
             areas = [DRAKE_TOP_COORDS, DRAKE_BOTTOM_COORDS]
             out = place_text(DRAKE_FILE, texts, areas)
@@ -247,7 +246,7 @@ class Meme():
     @commands.command()
     async def exit(self, ctx, straight, right, car):
         """Generates Left Exit 12 Off Ramp image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [straight, right, car]
             areas = [EXIT_STRAIGHT_COORDS, EXIT_RIGHT_COORDS, EXIT_CAR_COORDS]
             out = place_text(EXIT_FILE, texts, areas, color=WHITE, initial_font_size=60)
@@ -259,7 +258,7 @@ class Meme():
     @commands.command(aliases=['spongebob'])
     async def mocking_spongebob(self, ctx, person1, person2, message):
         """Generates Mocking Spongebob image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             submessage1 = person1 + ': ' + message
             message = ''.join(random.choice([char.upper(), char]) for char in message)
             submessage2 = person2 + ': ' + message
@@ -274,7 +273,7 @@ class Meme():
     @commands.command()
     async def roll_safe(self, ctx, message):
         """Generates Roll Safe image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [message]
             areas = [ROLL_SAFE_COORDS]
             out = place_text(ROLL_SAFE_FILE, texts, areas)
@@ -286,7 +285,7 @@ class Meme():
     @commands.command(aliases=['scroll'])
     async def truth(self, ctx, message):
         """Generates The Scroll of Truth image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [message]
             areas = [SCROLL_COORDS]
             out = place_text(SCROLL_OF_TRUTH_FILE, texts, areas)
@@ -298,7 +297,7 @@ class Meme():
     @commands.command(aliases=['sonic'])
     async def sonic_says(self, ctx, message):
         """Generates Sonic Says image macro."""
-        if ctx.channel.id in AUTHORIZED_CHANNELS or ctx.author.id in VIP:
+        if ctx.channel.id in AUTHORIZED_CHANNELS:
             texts = [message]
             areas = [SONIC_COORDS]
             out = place_text(SONIC_FILE, texts, areas, color=WHITE)
