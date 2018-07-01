@@ -164,6 +164,7 @@ def variable_sized_comic(filename, texts, area_length, color=BLACK):
 def place_overlay_on_image(image_url, overlay):
     try:
         bg_image = Image.open(BytesIO(requests.get(image_url).content))
+        bg_image = bg_image.convert('RGB')
     except:
         return 'Error: no image in URL or invalid URL.'
 
